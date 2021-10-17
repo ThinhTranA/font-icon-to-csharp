@@ -3,6 +3,14 @@ import React, { Component } from 'react';
 import { useLocation } from 'react-router-dom';
 import { generateCsharpCode } from '../code-gen/csharpCodegen';
 import MonacoEditor from '@monaco-editor/react';
+import {
+  Segment,
+  Grid,
+  Form,
+  Button,
+  Divider,
+  Container,
+} from 'semantic-ui-react';
 
 interface EditorProps {
   glyphs: Glyph[];
@@ -18,14 +26,24 @@ export default function Editor() {
   };
 
   return (
-    <div>
-      <MonacoEditor
-        height="90vh"
-        width="50vw"
-        defaultLanguage="csharp"
-        defaultValue={csharp}
-        theme="vs-dark"
-      />
-    </div>
+    <Container>
+      <Grid columns={2} relaxed="very" stackable>
+        <Grid.Column>
+          <p>Font icon component</p>
+        </Grid.Column>
+
+        <Grid.Column>
+          <MonacoEditor
+            height="90vh"
+            width="45vw"
+            defaultLanguage="csharp"
+            defaultValue={csharp}
+            theme="vs-dark"
+          />
+        </Grid.Column>
+      </Grid>
+
+      <Divider vertical>C#</Divider>
+    </Container>
   );
 }

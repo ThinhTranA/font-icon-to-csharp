@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 import dragDropImage from './assets/images/logo.svg';
 import { UploadFile } from './components/UploadFile';
 import Editor from './editor/Editor';
