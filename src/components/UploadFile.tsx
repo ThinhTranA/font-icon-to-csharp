@@ -3,12 +3,14 @@ import { useDropzone } from 'react-dropzone';
 import './UploadFile.css';
 import dragDropFilesImage from '../assets/images/dragdropfiles.svg';
 import { getTypeFontGlyphs } from '../font-parsers/typeFont';
-import { toUnicodeString } from '../utils/stringUtils';
-import { generateCsharpCode } from '../code-gen/csharpCodegen';
+import { useHistory } from 'react-router-dom';
+import { createContext } from 'react';
 
 interface UploadFileProps {}
 
 export const UploadFile: React.FC<UploadFileProps> = ({}) => {
+  let history = useHistory();
+
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0] as File;
     if (
@@ -20,7 +22,9 @@ export const UploadFile: React.FC<UploadFileProps> = ({}) => {
 
       const glyphs = await getTypeFontGlyphs(file);
 
-      console.log(generateCsharpCode('bob', glyphs!));
+      if (glyphs && glyphs.length > 0) {
+        history.push('/editor', { glyphs: glyphs });
+      }
     }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
