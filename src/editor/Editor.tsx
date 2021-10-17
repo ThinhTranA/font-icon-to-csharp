@@ -2,13 +2,13 @@ import { Glyph } from 'opentype.js';
 import React, { Component } from 'react';
 import { useLocation } from 'react-router-dom';
 import { generateCsharpCode } from '../code-gen/csharpCodegen';
-import Editor from '@monaco-editor/react';
+import MonacoEditor from '@monaco-editor/react';
 
 interface EditorProps {
   glyphs: Glyph[];
 }
 
-export default function IconCodeEditor() {
+export default function Editor() {
   const location = useLocation<EditorProps>();
 
   const csharp = generateCsharpCode('bob', location.state.glyphs);
@@ -19,7 +19,7 @@ export default function IconCodeEditor() {
 
   return (
     <div>
-      <Editor
+      <MonacoEditor
         height="90vh"
         width="50vw"
         defaultLanguage="csharp"
