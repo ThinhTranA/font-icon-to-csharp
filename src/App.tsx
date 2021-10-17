@@ -3,7 +3,7 @@ import { Route } from 'react-router';
 import './App.css';
 import dragDropImage from './assets/images/logo.svg';
 import { UploadFile } from './components/UploadFile';
-import Editor from './editor/Editor';
+import IconCodeEditor from './editor/Editor';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <div className="column-layout_3">
           <Route exact path="/" component={UploadFile} />
           <Route path="/upload" component={UploadFile} />
-          <Route path="/editor" component={Editor} />
+          <Route path="/editor" component={IconCodeEditor} />
           {/* <UploadFile /> */}
         </div>
       </header>
