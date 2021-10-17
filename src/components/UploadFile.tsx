@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './UploadFile.css';
 import dragDropFilesImage from '../assets/images/dragdropfiles.svg';
-import { CreateFontA } from '../font-parsers/otfFont';
+import { getTypeFontGlyphs } from '../font-parsers/typeFont';
+import { toUnicodeString } from '../utils/stringUtils';
+import { generateCsharpCode } from '../code-gen/csharpCodegen';
 
 interface UploadFileProps {}
 
 export const UploadFile: React.FC<UploadFileProps> = ({}) => {
   const onDrop = useCallback(async (acceptedFiles) => {
-    // Do something with the files
-    console.log(acceptedFiles);
     const file = acceptedFiles[0] as File;
     if (
       file.name.endsWith('.ttf') ||
@@ -18,7 +18,9 @@ export const UploadFile: React.FC<UploadFileProps> = ({}) => {
     ) {
       if (!file) return;
 
-      const font = await CreateFontA(file);
+      const glyphs = await getTypeFontGlyphs(file);
+
+      console.log(generateCsharpCode('bob', glyphs!));
     }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });

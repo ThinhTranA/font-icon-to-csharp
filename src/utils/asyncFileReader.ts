@@ -8,6 +8,7 @@ export function readFileAsArrayBuffer(file: File) {
 
 export function readFile(fileReaderMethod: any, file: File) {
   const fr = new FileReader();
+
   return new Promise((resolve, reject) => {
     fr.onload = () => resolve(fr.result);
     fr.onerror = () => {
