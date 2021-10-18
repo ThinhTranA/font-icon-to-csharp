@@ -23,7 +23,7 @@ export const UploadFile: React.FC<UploadFileProps> = ({}) => {
       const glyphs = await getTypeFontGlyphs(file);
 
       if (glyphs && glyphs.length > 0) {
-        history.push('/editor', { glyphs: glyphs });
+        history.push('/editor', { glyphs: glyphs, fileName: file.name });
       }
     }
   }, []);

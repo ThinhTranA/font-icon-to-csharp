@@ -11,40 +11,31 @@ import {
   Divider,
   Container,
 } from 'semantic-ui-react';
+import { FontIcon } from '../components/FontIcon';
 
 interface EditorProps {
   glyphs: Glyph[];
-  fontFile: File;
+  fileName: string;
 }
 
 export default function Editor() {
-  const location = useLocation<EditorProps>();
+  const { glyphs, fileName } = useLocation<EditorProps>().state;
 
-  const csharp = generateCsharpCode('bob', location.state.glyphs);
-  const fontFile = location.state.fontFile;
-  const options = {
-    selectOnLineNumbers: true,
-  };
+  const csharpClassName = fileName.split('.')[0];
+  const csharpCode = generateCsharpCode(csharpClassName, glyphs);
 
-  const gl = location.state.glyphs[3];
-
-  const drawIcon = (ref: any) => {
-    if (ref) {
-      ref.width = 33;
-      ref.height = 33;
-      const ctx = ref.getContext('2d');
-      gl.draw(ctx!, 0, 30, 30);
-
-      ctx.fillStyle = 'red';
-    }
-  };
+  console.log(glyphs);
+  const fontIcons = glyphs.map((gl) => {
+    return <FontIcon key={gl.name} glyph={gl} />;
+  });
 
   return (
     <Container>
       <Grid columns={2} relaxed="very" stackable>
         <Grid.Column>
           <p>Font icon component</p>
-          <canvas ref={drawIcon} />
+
+          {fontIcons}
         </Grid.Column>
 
         <Grid.Column>
@@ -52,7 +43,7 @@ export default function Editor() {
             height="90vh"
             width="45vw"
             defaultLanguage="csharp"
-            defaultValue={csharp}
+            defaultValue={csharpCode}
             theme="vs-dark"
           />
         </Grid.Column>
