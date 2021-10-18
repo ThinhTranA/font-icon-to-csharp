@@ -14,15 +14,29 @@ import {
 
 interface EditorProps {
   glyphs: Glyph[];
+  fontFile: File;
 }
 
 export default function Editor() {
   const location = useLocation<EditorProps>();
 
   const csharp = generateCsharpCode('bob', location.state.glyphs);
-  const code = csharp;
+  const fontFile = location.state.fontFile;
   const options = {
     selectOnLineNumbers: true,
+  };
+
+  const gl = location.state.glyphs[3];
+
+  const drawIcon = (ref: any) => {
+    if (ref) {
+      ref.width = 33;
+      ref.height = 33;
+      const ctx = ref.getContext('2d');
+      gl.draw(ctx!, 0, 30, 30);
+
+      ctx.fillStyle = 'red';
+    }
   };
 
   return (
@@ -30,6 +44,7 @@ export default function Editor() {
       <Grid columns={2} relaxed="very" stackable>
         <Grid.Column>
           <p>Font icon component</p>
+          <canvas ref={drawIcon} />
         </Grid.Column>
 
         <Grid.Column>
