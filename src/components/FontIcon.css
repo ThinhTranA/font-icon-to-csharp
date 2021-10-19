@@ -1,0 +1,16 @@
+.Font-Icon-Container {
+  width: 120px;
+  height: 96px;
+  padding: 16px;
+  text-align: center;
+  outline: 1px solid #eee;
+  background-color: #fff;
+}
+
+.Font-Icon-Name {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.8;
+  margin: 10px 0 0;
+  color: black;
+}

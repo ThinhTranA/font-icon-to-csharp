@@ -1,5 +1,6 @@
 import { Glyph } from 'opentype.js';
 import React from 'react';
+import './FontIcon.css';
 
 interface FontIconProps {
   glyph: Glyph;
@@ -8,14 +9,22 @@ interface FontIconProps {
 export const FontIcon: React.FC<FontIconProps> = ({ glyph }) => {
   const drawIcon = (ref: any) => {
     if (ref && glyph) {
-      ref.width = 33;
-      ref.height = 33;
+      ref.width = 32;
+      ref.height = 32;
       const ctx = ref.getContext('2d');
-      glyph.draw(ctx!, 0, 30, 30);
 
-      ctx.fillStyle = 'red';
+      var path = glyph.getPath(0, 30, 30);
+      path.fill = '#00ffff';
+
+      //glyph.draw(ctx!, 0, 30, 30);
+      path.draw(ctx);
     }
   };
 
-  return <canvas ref={drawIcon} />;
+  return (
+    <div className="Font-Icon-Container">
+      <canvas ref={drawIcon} />
+      <h4 className="Font-Icon-Name">{glyph.name}</h4>
+    </div>
+  );
 };
