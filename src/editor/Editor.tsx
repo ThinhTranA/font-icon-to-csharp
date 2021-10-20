@@ -1,17 +1,10 @@
 import { Glyph } from 'opentype.js';
-import React, { Component } from 'react';
 import { useLocation } from 'react-router-dom';
 import { generateCsharpCode } from '../code-gen/csharpCodegen';
 import MonacoEditor from '@monaco-editor/react';
-import {
-  Segment,
-  Grid,
-  Form,
-  Button,
-  Divider,
-  Container,
-} from 'semantic-ui-react';
+import { Grid, Divider, Container, Search, Input } from 'semantic-ui-react';
 import { FontIcon } from '../components/FontIcon';
+import './Editor.css';
 
 interface EditorProps {
   glyphs: Glyph[];
@@ -24,15 +17,9 @@ export default function Editor() {
   const csharpClassName = fileName.split('.')[0];
   const csharpCode = generateCsharpCode(csharpClassName, glyphs);
 
-  console.log(glyphs);
-  const fontIcons = glyphs.map((gl) => {
-    return <FontIcon key={gl.name} glyph={gl} />;
-  });
-
   const iconColumnsCount = 5;
   const fontIconsGrid = () => {
     const glyphsCopy = [...glyphs];
-
     let gridArray = [];
     let gridRow = [];
 
@@ -63,10 +50,21 @@ export default function Editor() {
   };
 
   return (
-    <Container style={{ innerWidth: '100vw' }}>
+    <Container>
+      <Search className="search-bar" />
+
+      {/* https://semantic-ui.com/modules/search.html */}
+      <div className="ui search">
+        <input
+          className="prompt"
+          type="text"
+          placeholder="Common passwords..."
+        />
+        <div className="results"></div>
+      </div>
       <Grid columns={2} relaxed="very" stackable>
         <Grid.Column width={10}>
-          <p>Font icon component</p>
+          <h2>Font icon component</h2>
 
           <Grid columns={iconColumnsCount} style={{ innerWidth: '45vw' }}>
             {fontIconsGrid()}
@@ -78,6 +76,7 @@ export default function Editor() {
         </Grid.Column>
 
         <Grid.Column width={5}>
+          <p>C# code</p>
           <MonacoEditor
             width="32vw"
             defaultLanguage="csharp"
