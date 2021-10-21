@@ -5,14 +5,22 @@ import 'semantic-ui-css/semantic.min.css';
 import dragDropImage from './assets/images/logo.svg';
 import { UploadFile } from './components/UploadFile';
 import Editor from './editor/Editor';
+import { Switch } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
+import { NavBar } from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <Route exact path="/" component={UploadFile} />
-        <Route path="/upload" component={UploadFile} />
-        <Route path="/editor" component={Editor} />
+        <NavBar />
+        <Container style={{ marginTop: '7em' }}>
+          <Switch>
+            <Route exact path="/" component={UploadFile} />
+            <Route path="/upload" component={UploadFile} />
+            <Route path="/editor" component={Editor} />
+          </Switch>
+        </Container>
       </div>
     </div>
   );
