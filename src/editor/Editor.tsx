@@ -5,6 +5,7 @@ import MonacoEditor from '@monaco-editor/react';
 import { Grid, Divider, Container, Search, Input } from 'semantic-ui-react';
 import { FontIcon } from '../components/FontIcon';
 import './Editor.css';
+import { useState } from 'react';
 
 interface EditorProps {
   glyphs: Glyph[];
@@ -14,12 +15,15 @@ interface EditorProps {
 export default function Editor() {
   const { glyphs, fileName } = useLocation<EditorProps>().state;
 
+  const [filter, setFilter] = useState('');
+  const [glyphsToDisplay, setGlyphsToDisplay] = useState(glyphs);
+
   const csharpClassName = fileName.split('.')[0];
   const csharpCode = generateCsharpCode(csharpClassName, glyphs);
 
   const iconColumnsCount = 5;
   const fontIconsGrid = () => {
-    const glyphsCopy = [...glyphs];
+    const glyphsCopy = [...glyphsToDisplay];
     let gridArray = [];
     let gridRow = [];
 
@@ -34,8 +38,6 @@ export default function Editor() {
       gridRow = [];
     }
 
-    console.log(glyphs);
-    console.log(glyphsCopy === glyphs);
     return gridArray.map((row, idx) => {
       return (
         <Grid.Row key={idx}>
@@ -51,15 +53,33 @@ export default function Editor() {
 
   return (
     <Container>
-      <Search className="search-bar" />
-
+      {/* idea: https://fontawesome.com/v5.15/icons?d=gallery&p=2&c=users-people */}
       {/* https://semantic-ui.com/modules/search.html */}
       <div className="ui search">
-        <input
-          className="prompt"
-          type="text"
-          placeholder="Common passwords..."
-        />
+        <div
+          className="ui icon input"
+          style={{
+            fontSize: '1.6rem',
+            width: '90%',
+          }}
+        >
+          <input
+            onChange={(e) => {
+              console.log(e.target.value);
+              setGlyphsToDisplay(
+                glyphs.filter((g) => g.name.includes(e.target.value))
+              );
+              console.log(glyphs.length);
+              console.log(glyphsToDisplay.length);
+
+              setFilter(e.target.value);
+            }}
+            className="prompt"
+            type="text"
+            placeholder="Search icons for..."
+          />
+          <i className="search icon" />
+        </div>
         <div className="results"></div>
       </div>
       <Grid columns={2} relaxed="very" stackable>

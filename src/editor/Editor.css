@@ -1,3 +1,7 @@
 .search-bar {
   font-size: calc(10px + 2vmin);
 }
+
+input {
+  white-space: nowrap;
+}

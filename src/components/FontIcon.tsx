@@ -13,7 +13,7 @@ export const FontIcon: React.FC<FontIconProps> = ({ glyph }) => {
       ref.height = 32;
       const ctx = ref.getContext('2d');
 
-      var path = glyph.getPath(0, 30, 30);
+      var path = glyph.getPath(0, 28, 28);
       path.fill = '#00ffff';
 
       //glyph.draw(ctx!, 0, 30, 30);
