@@ -6,7 +6,7 @@ interface FontIconProps {
   glyph: Glyph;
 }
 
-export const FontIcon: React.FC<FontIconProps> = ({ glyph }) => {
+export const FontIcon: React.FC<FontIconProps> = ({ glyph }: FontIconProps) => {
   const drawIcon = (ref: any) => {
     if (ref && glyph) {
       ref.width = 32;
