@@ -8,7 +8,7 @@ interface FontIconProps {
 
 export const FontIcon: React.FC<FontIconProps> = ({ glyph }: FontIconProps) => {
   const drawIcon = (ref: any) => {
-    if (ref && glyph) {
+    if (ref && glyph && typeof glyph.getPath === 'function') {
       ref.width = 32;
       ref.height = 32;
       const ctx = ref.getContext('2d');
