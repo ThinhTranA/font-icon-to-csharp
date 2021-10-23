@@ -1,6 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Container, Divider, Icon, Menu } from 'semantic-ui-react';
+import {
+  Button,
+  Container,
+  Divider,
+  Dropdown,
+  Icon,
+  Menu,
+} from 'semantic-ui-react';
 import './NavBar.css';
 
 interface NavBarProps {
@@ -9,7 +16,18 @@ interface NavBarProps {
 }
 
 export const NavBar: React.FC<NavBarProps> = ({ uploadFileName }) => {
-  console.log('navvvvvvvvvvvvbarrr');
+  const [infoValue, setInfoValue] = useState('');
+  const options = [
+    { key: 1, text: 'Submit an Issue', value: 'issue' },
+    { key: 2, text: 'Support this Project', value: 'support' },
+  ];
+
+  const optionChange = (e: any, option: any) => {
+    if (option.value === 'issue') {
+      setInfoValue('');
+      window.open('https://www.google.com');
+    }
+  };
 
   return (
     <Menu inverted fixed="top" secondary>
@@ -43,6 +61,19 @@ export const NavBar: React.FC<NavBarProps> = ({ uploadFileName }) => {
           </Menu.Item>
         </Fragment>
       )}
+
+      <Menu.Item position={uploadFileName ? undefined : 'right'}>
+        <Button.Group inverted>
+          <Dropdown
+            className="button icon"
+            icon="info"
+            floating
+            onChange={optionChange}
+            options={options}
+            value={infoValue}
+          />
+        </Button.Group>
+      </Menu.Item>
     </Menu>
   );
 };
