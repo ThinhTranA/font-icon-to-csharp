@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Container, Menu } from 'semantic-ui-react';
+import { Container, Icon, Menu } from 'semantic-ui-react';
+import './NavBar.css';
 
 interface NavBarProps {}
 
@@ -9,10 +10,10 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     <Menu inverted fixed="top">
       <Container>
         <Menu.Item as={NavLink} to="/" header>
-          <i className="icon home" />
+          <Icon name="home" size="large" />
         </Menu.Item>
         <Menu.Item position="right">
-          <i className="icon search" />
+          <Icon name="search" size="large" />
         </Menu.Item>
       </Container>
     </Menu>
