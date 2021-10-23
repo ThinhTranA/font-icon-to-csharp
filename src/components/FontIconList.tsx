@@ -1,17 +1,39 @@
 import { Glyph } from 'opentype.js';
-import React, { Fragment, useState } from 'react';
-import { Grid } from 'semantic-ui-react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 import { FontIcon } from './FontIcon';
 
 interface FontIconListProps {
   glyphs: Glyph[];
+  screenPercent: number;
 }
 
-export const FontIconList: React.FC<FontIconListProps> = ({ glyphs }) => {
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  console.log(width);
+  return {
+    width,
+    height,
+  };
+}
+
+export const FontIconList: React.FC<FontIconListProps> = ({
+  glyphs,
+  screenPercent,
+}) => {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
   const [glyphsToDisplay, setGlyphsToDisplay] = useState<Glyph[]>(glyphs);
   const [filter, setFilter] = useState('');
 
-  const iconColumnsCount = 6;
+  const font_Icon_Container_Width = 120;
+  const columnSpacing = 24;
+  let iconColumnsCount = Math.floor(
+    (windowDimensions.width * screenPercent) /
+      (font_Icon_Container_Width + columnSpacing)
+  ) as SemanticWIDTHS;
+
   const fontIconsGrid = () => {
     const glyphsCopy = [...glyphsToDisplay];
     let gridArray = [];

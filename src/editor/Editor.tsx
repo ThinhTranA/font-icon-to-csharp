@@ -20,23 +20,31 @@ export default function Editor() {
   const csharpCode = generateCsharpCode(csharpClassName, glyphs);
 
   if (glyphs) {
+    //total is 16
+    const fontListWidth = 10;
+    const dividerWidth = 1;
+    const editorWidth = 5;
+
     return (
       <Fragment>
         <NavBar uploadFileName={fileName} />
 
         <Container>
           <Grid columns={2} relaxed="very" stackable>
-            <Grid.Column width={10}>
+            <Grid.Column width={fontListWidth}>
               <br />
               <br />
-              <FontIconList glyphs={glyphs} />
+              <FontIconList
+                glyphs={glyphs}
+                screenPercent={fontListWidth / 16}
+              />
             </Grid.Column>
 
-            <Grid.Column width={1}>
+            <Grid.Column width={dividerWidth}>
               <Divider vertical>C#</Divider>
             </Grid.Column>
 
-            <Grid.Column width={5}>
+            <Grid.Column width={editorWidth}>
               <p>C# code</p>
               <MonacoEditor
                 defaultLanguage="csharp"
