@@ -9,6 +9,13 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
   return (
     <Menu inverted fixed="top">
       <Container>
+        <Menu.Item header>
+          <div style={{ display: 'flex' }}>
+            <h3>Font Icon</h3>
+            <Icon name="angle right" size="large" />
+            <h3>C#</h3>
+          </div>
+        </Menu.Item>
         <Menu.Item as={NavLink} to="/" header>
           <Icon name="home" size="large" />
         </Menu.Item>

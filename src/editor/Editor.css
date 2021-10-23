@@ -5,3 +5,7 @@
 input {
   white-space: nowrap;
 }
+
+.ui.container {
+  width: 96%;
+}
