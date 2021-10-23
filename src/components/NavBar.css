@@ -14,3 +14,19 @@ h3 {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.vertical-line {
+  border-left: 3px solid white;
+  opacity: 0.16;
+  height: 40px;
+}
+
+.ui.inverted.menu .active.item {
+  background: transparent;
+  color: #fff !important;
+}
+
+.ui.secondary.inverted.menu .active.item {
+  background: transparent;
+  color: #fff !important;
+}

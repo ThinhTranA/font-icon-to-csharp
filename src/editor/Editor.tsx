@@ -5,6 +5,8 @@ import MonacoEditor from '@monaco-editor/react';
 import { Grid, Divider, Container, Search, Input } from 'semantic-ui-react';
 import './Editor.css';
 import { FontIconList } from '../components/FontIconList';
+import { NavBar } from '../components/NavBar';
+import { Fragment } from 'react';
 
 interface EditorProps {
   glyphs: Glyph[];
@@ -19,26 +21,32 @@ export default function Editor() {
 
   if (glyphs) {
     return (
-      <Container>
-        <Grid columns={2} relaxed="very" stackable>
-          <Grid.Column width={10}>
-            <FontIconList glyphs={glyphs} />
-          </Grid.Column>
+      <Fragment>
+        <NavBar uploadFileName={fileName} />
 
-          <Grid.Column width={1}>
-            <Divider vertical>C#</Divider>
-          </Grid.Column>
+        <Container>
+          <Grid columns={2} relaxed="very" stackable>
+            <Grid.Column width={10}>
+              <br />
+              <br />
+              <FontIconList glyphs={glyphs} />
+            </Grid.Column>
 
-          <Grid.Column width={5}>
-            <p>C# code</p>
-            <MonacoEditor
-              defaultLanguage="csharp"
-              defaultValue={csharpCode}
-              theme="vs-dark"
-            />
-          </Grid.Column>
-        </Grid>
-      </Container>
+            <Grid.Column width={1}>
+              <Divider vertical>C#</Divider>
+            </Grid.Column>
+
+            <Grid.Column width={5}>
+              <p>C# code</p>
+              <MonacoEditor
+                defaultLanguage="csharp"
+                defaultValue={csharpCode}
+                theme="vs-dark"
+              />
+            </Grid.Column>
+          </Grid>
+        </Container>
+      </Fragment>
     );
   } else {
     return <div>Unable to read font glyphs</div>;

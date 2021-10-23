@@ -12,14 +12,11 @@ import { NavBar } from './components/NavBar';
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Container style={{ marginTop: '7em' }}>
-        <Switch>
-          <Route exact path="/" component={UploadFile} />
-          <Route path="/upload" component={UploadFile} />
-          <Route path="/editor" component={Editor} />
-        </Switch>
-      </Container>
+      <Switch>
+        <Route exact path="/" component={UploadFile} />
+        <Route path="/upload" component={UploadFile} />
+        <Route path="/editor" component={Editor} />
+      </Switch>
     </div>
   );
 }
