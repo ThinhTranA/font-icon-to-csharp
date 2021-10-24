@@ -1,15 +1,17 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment, useCallback, useContext } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './UploadFile.css';
 import dragDropFilesImage from '../assets/images/dragdropfiles.svg';
 import { getTypeFontGlyphs } from '../font-parsers/typeFont';
 import { useHistory } from 'react-router-dom';
-import { createContext } from 'react';
-import { NavBar } from './NavBar';
 import { Button, Divider, Grid } from 'semantic-ui-react';
+import AppContext from '../context/AppContext';
 
 export const UploadFile = () => {
   let history = useHistory();
+
+  const appContext = useContext(AppContext);
+  appContext.updateFontFilename('');
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0] as File;
@@ -31,7 +33,6 @@ export const UploadFile = () => {
 
   return (
     <Fragment>
-      <NavBar />
       <div className="Upload-container">
         <Grid columns={3} stackable>
           <Grid.Column width={7}>

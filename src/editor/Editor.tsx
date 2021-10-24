@@ -6,7 +6,8 @@ import { Grid, Divider, Container, Search, Input } from 'semantic-ui-react';
 import './Editor.css';
 import { FontIconList } from '../components/FontIconList';
 import { NavBar } from '../components/NavBar';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+import AppContext from '../context/AppContext';
 
 interface EditorProps {
   glyphs: Glyph[];
@@ -15,6 +16,8 @@ interface EditorProps {
 
 export default function Editor() {
   const { glyphs, fileName } = useLocation<EditorProps>().state;
+  const appContext = useContext(AppContext);
+  appContext.updateFontFilename(fileName);
 
   const csharpClassName = fileName.split('.')[0];
   const csharpCode = generateCsharpCode(csharpClassName, glyphs);
@@ -27,8 +30,6 @@ export default function Editor() {
 
     return (
       <Fragment>
-        <NavBar uploadFileName={fileName} />
-
         <Container>
           <Grid columns={2} relaxed="very" stackable>
             <Grid.Column width={fontListWidth}>

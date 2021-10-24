@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   Button,
@@ -8,6 +8,7 @@ import {
   Icon,
   Menu,
 } from 'semantic-ui-react';
+import AppContext from '../context/AppContext';
 import './NavBar.css';
 
 interface NavBarProps {
@@ -16,6 +17,9 @@ interface NavBarProps {
 }
 
 export const NavBar: React.FC<NavBarProps> = ({ uploadFileName }) => {
+  const appContext = useContext(AppContext);
+  uploadFileName = appContext.fontFilename;
+
   const [infoValue, setInfoValue] = useState('');
   const options = [
     { key: 1, text: 'Submit an Issue', value: 'issue' },
