@@ -1,5 +1,5 @@
 import { Glyph } from 'opentype.js';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Grid, SemanticWIDTHS } from 'semantic-ui-react';
 import { FontIcon } from './FontIcon';
 
@@ -10,7 +10,6 @@ interface FontIconListProps {
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
-  console.log(width);
   return {
     width,
     height,
@@ -21,11 +20,12 @@ export const FontIconList: React.FC<FontIconListProps> = ({
   glyphs,
   screenPercent,
 }) => {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
+  // const [windowDimensions, setWindowDimensions] = useState(
+  //   getWindowDimensions()
+  // );
+  const windowDimensions = getWindowDimensions();
   const [glyphsToDisplay, setGlyphsToDisplay] = useState<Glyph[]>(glyphs);
-  const [filter, setFilter] = useState('');
+  const [_, setFilter] = useState('');
 
   const font_Icon_Container_Width = 120;
   const columnSpacing = 24;

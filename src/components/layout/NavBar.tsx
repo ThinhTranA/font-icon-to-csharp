@@ -1,14 +1,7 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import {
-  Button,
-  Container,
-  Divider,
-  Dropdown,
-  Icon,
-  Menu,
-} from 'semantic-ui-react';
-import AppContext from '../context/AppContext';
+import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
+import AppContext from '../../context/AppContext';
 import './NavBar.css';
 
 interface NavBarProps {

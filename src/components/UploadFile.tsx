@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useContext } from 'react';
+import { Fragment, useCallback, useContext, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './UploadFile.css';
 import dragDropFilesImage from '../assets/images/dragdropfiles.svg';
@@ -6,9 +6,12 @@ import { getTypeFontGlyphs } from '../font-parsers/typeFont';
 import { useHistory } from 'react-router-dom';
 import { Button, Divider, Grid } from 'semantic-ui-react';
 import AppContext from '../context/AppContext';
+import LoadingComponent from './layout/LoadingComponent';
 
 export const UploadFile = () => {
   let history = useHistory();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const appContext = useContext(AppContext);
   appContext.updateFontFilename('');
@@ -22,7 +25,11 @@ export const UploadFile = () => {
     ) {
       if (!file) return;
 
+      setIsLoading(true);
+
       const glyphs = await getTypeFontGlyphs(file);
+
+      setIsLoading(false);
 
       if (glyphs && glyphs.length > 0) {
         history.push('/editor', { glyphs: glyphs, fileName: file.name });
@@ -30,6 +37,8 @@ export const UploadFile = () => {
     }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  if (isLoading) return <LoadingComponent />;
 
   return (
     <Fragment>

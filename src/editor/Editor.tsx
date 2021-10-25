@@ -2,10 +2,9 @@ import { Glyph } from 'opentype.js';
 import { useLocation } from 'react-router-dom';
 import { generateCsharpCode } from '../code-gen/csharpCodegen';
 import MonacoEditor from '@monaco-editor/react';
-import { Grid, Divider, Container, Search, Input } from 'semantic-ui-react';
+import { Grid, Divider, Container } from 'semantic-ui-react';
 import './Editor.css';
 import { FontIconList } from '../components/FontIconList';
-import { NavBar } from '../components/NavBar';
 import { Fragment, useContext } from 'react';
 import AppContext from '../context/AppContext';
 
@@ -27,8 +26,6 @@ export default function Editor() {
     const fontListWidth = 10;
     const dividerWidth = 1;
     const editorWidth = 5;
-
-    console.log('aaa');
 
     return (
       <Fragment>
