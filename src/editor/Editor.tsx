@@ -28,6 +28,8 @@ export default function Editor() {
     const dividerWidth = 1;
     const editorWidth = 5;
 
+    console.log('aaa');
+
     return (
       <Fragment>
         <Container>
@@ -48,6 +50,7 @@ export default function Editor() {
             <Grid.Column width={editorWidth}>
               <p>C# code</p>
               <MonacoEditor
+                height="99%"
                 defaultLanguage="csharp"
                 defaultValue={csharpCode}
                 theme="vs-dark"
