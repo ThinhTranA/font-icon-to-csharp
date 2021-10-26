@@ -93,8 +93,8 @@ export const FontIconList: React.FC<FontIconListProps> = ({
         <div className="results"></div>
       </div>
 
-      <h2>Font icon component</h2>
-
+      <br />
+      <br />
       <Grid columns={iconColumnsCount} style={{ innerWidth: '45vw' }}>
         {fontIconsGrid()}
       </Grid>

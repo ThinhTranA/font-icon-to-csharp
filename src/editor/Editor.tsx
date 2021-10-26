@@ -5,8 +5,9 @@ import MonacoEditor from '@monaco-editor/react';
 import { Grid, Divider, Container } from 'semantic-ui-react';
 import './Editor.css';
 import { FontIconList } from '../components/FontIconList';
-import { Fragment, useContext } from 'react';
+import { Fragment, useCallback, useContext } from 'react';
 import AppContext from '../context/AppContext';
+import debounce from 'lodash.debounce';
 
 interface EditorProps {
   glyphs: Glyph[];
@@ -20,6 +21,15 @@ export default function Editor() {
 
   const csharpClassName = fileName.split('.')[0];
   const csharpCode = generateCsharpCode(csharpClassName, glyphs);
+
+  const saveEditCsharpCode = useCallback(
+    debounce((nextValue) => console.log(nextValue), 500),
+    []
+  );
+
+  const handleEditorCodeChange = (editedCode: string | undefined) => {
+    saveEditCsharpCode(editedCode);
+  };
 
   if (glyphs) {
     //total is 16
@@ -47,6 +57,7 @@ export default function Editor() {
             <Grid.Column width={editorWidth}>
               <p>C# code</p>
               <MonacoEditor
+                onChange={handleEditorCodeChange}
                 height="99%"
                 defaultLanguage="csharp"
                 defaultValue={csharpCode}
