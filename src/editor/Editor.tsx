@@ -2,12 +2,14 @@ import { Glyph } from 'opentype.js';
 import { useLocation } from 'react-router-dom';
 import { generateCsharpCode } from '../code-gen/csharpCodegen';
 import MonacoEditor from '@monaco-editor/react';
-import { Grid, Divider, Container } from 'semantic-ui-react';
+import { Grid, Divider, Container, Button, Icon } from 'semantic-ui-react';
 import './Editor.css';
 import { FontIconList } from '../components/FontIconList';
-import { Fragment, useCallback, useContext } from 'react';
+import { Fragment, useCallback, useContext, useState } from 'react';
 import AppContext from '../context/AppContext';
 import debounce from 'lodash.debounce';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import { toast, ToastContainer } from 'react-toastify';
 
 interface EditorProps {
   glyphs: Glyph[];
@@ -20,15 +22,26 @@ export default function Editor() {
   appContext.updateFontFilename(fileName);
 
   const csharpClassName = fileName.split('.')[0];
-  const csharpCode = generateCsharpCode(csharpClassName, glyphs);
+  const [csharpCode, setCsharpCode] = useState(
+    generateCsharpCode(csharpClassName, glyphs)
+  );
 
   const saveEditCsharpCode = useCallback(
-    debounce((nextValue) => console.log(nextValue), 500),
+    debounce((nextValue) => setCsharpCode(nextValue), 500),
     []
   );
 
   const handleEditorCodeChange = (editedCode: string | undefined) => {
     saveEditCsharpCode(editedCode);
+  };
+
+  const copyCode = useCallback(
+    debounce(() => toast.success('Code copied to clipboard'), 500),
+    []
+  );
+
+  const handleCopyCodeChange = () => {
+    copyCode();
   };
 
   if (glyphs) {
@@ -56,6 +69,19 @@ export default function Editor() {
 
             <Grid.Column width={editorWidth}>
               <p>C# code</p>
+              <ToastContainer
+                position="bottom-right"
+                hideProgressBar
+                theme="colored"
+                autoClose={1000}
+              />
+              <CopyToClipboard text={csharpCode} onCopy={handleCopyCodeChange}>
+                <Button inverted>
+                  <Icon name="copy" />
+                  Copy to clipboard
+                </Button>
+              </CopyToClipboard>
+
               <MonacoEditor
                 onChange={handleEditorCodeChange}
                 height="99%"
