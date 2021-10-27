@@ -1,7 +1,7 @@
 import { Glyph } from 'opentype.js';
 import { toUnicodeString } from '../utils/stringUtils';
 
-export function generateCsharpCode(className: string, glyphs: Glyph[]) {
+export function generateCsharpClassCode(className: string, glyphs: Glyph[]) {
   let s = `\nstatic class ${className}`;
   s += '\n{';
 
@@ -16,5 +16,21 @@ export function generateCsharpCode(className: string, glyphs: Glyph[]) {
     return `\n\tpublic const string ${glyph.name} = "${toUnicodeString(
       glyph.unicode
     )}";`;
+  }
+}
+
+export function generateCsharpEnumCode(enumName: string, glyphs: Glyph[]) {
+  let s = `\npublic enum ${enumName}`;
+  s += '\n{';
+
+  glyphs.forEach((glyph) => {
+    s += addGlyphToEnum(glyph);
+  });
+
+  s += '\n}';
+  return s;
+
+  function addGlyphToEnum(glyph: Glyph) {
+    return `\n\t${glyph.name} = "${toUnicodeString(glyph.unicode)}",`;
   }
 }

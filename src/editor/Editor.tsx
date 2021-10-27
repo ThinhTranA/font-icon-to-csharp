@@ -1,15 +1,11 @@
 import { Glyph } from 'opentype.js';
 import { useLocation } from 'react-router-dom';
-import { generateCsharpCode } from '../code-gen/csharpCodegen';
-import MonacoEditor from '@monaco-editor/react';
 import {
-  Grid,
-  Divider,
-  Container,
-  Button,
-  Icon,
-  Dropdown,
-} from 'semantic-ui-react';
+  generateCsharpClassCode,
+  generateCsharpEnumCode,
+} from '../code-gen/csharpCodegen';
+import MonacoEditor from '@monaco-editor/react';
+import { Grid, Container, Button, Icon, Dropdown } from 'semantic-ui-react';
 import './Editor.css';
 import { FontIconList } from '../components/FontIconList';
 import { Fragment, useCallback, useContext, useState } from 'react';
@@ -33,8 +29,9 @@ export default function Editor() {
   appContext.updateFontFilename(fileName);
 
   const csharpClassName = fileName.split('.')[0];
+  const csharpEnumName = csharpClassName;
   const [csharpCode, setCsharpCode] = useState(
-    generateCsharpCode(csharpClassName, glyphs)
+    generateCsharpClassCode(csharpClassName, glyphs)
   );
 
   const saveEditCsharpCode = useCallback(
@@ -61,6 +58,14 @@ export default function Editor() {
 
   const optionChange = (e: any, option: any) => {
     setGeneratedCodeType(option.value);
+    switch (option.value) {
+      case 'csharpClass':
+        setCsharpCode(generateCsharpClassCode(csharpClassName, glyphs));
+        break;
+      case 'csharpEnum':
+        setCsharpCode(generateCsharpEnumCode(csharpEnumName, glyphs));
+        break;
+    }
   };
 
   if (glyphs) {
@@ -121,7 +126,7 @@ export default function Editor() {
                 onChange={handleEditorCodeChange}
                 height="99%"
                 defaultLanguage="csharp"
-                defaultValue={csharpCode}
+                value={csharpCode}
                 theme="vs-dark"
               />
             </Grid.Column>
