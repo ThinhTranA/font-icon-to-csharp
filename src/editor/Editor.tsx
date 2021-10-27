@@ -2,7 +2,14 @@ import { Glyph } from 'opentype.js';
 import { useLocation } from 'react-router-dom';
 import { generateCsharpCode } from '../code-gen/csharpCodegen';
 import MonacoEditor from '@monaco-editor/react';
-import { Grid, Divider, Container, Button, Icon } from 'semantic-ui-react';
+import {
+  Grid,
+  Divider,
+  Container,
+  Button,
+  Icon,
+  Dropdown,
+} from 'semantic-ui-react';
 import './Editor.css';
 import { FontIconList } from '../components/FontIconList';
 import { Fragment, useCallback, useContext, useState } from 'react';
@@ -11,6 +18,10 @@ import debounce from 'lodash.debounce';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { toast, ToastContainer } from 'react-toastify';
 
+const codeTypeOptions = [
+  { key: 1, text: 'C# Class ', value: 'csharpClass' },
+  { key: 2, text: 'C# Enum  ', value: 'csharpEnum' },
+];
 interface EditorProps {
   glyphs: Glyph[];
   fileName: string;
@@ -44,11 +55,18 @@ export default function Editor() {
     copyCode();
   };
 
+  const [generatedCodeType, setGeneratedCodeType] = useState(
+    codeTypeOptions[0].value
+  );
+
+  const optionChange = (e: any, option: any) => {
+    setGeneratedCodeType(option.value);
+  };
+
   if (glyphs) {
     //total is 16
     const fontListWidth = 10;
-    const dividerWidth = 1;
-    const editorWidth = 5;
+    const editorWidth = 6;
 
     return (
       <Fragment>
@@ -63,24 +81,41 @@ export default function Editor() {
               />
             </Grid.Column>
 
-            <Grid.Column width={dividerWidth}>
-              <Divider vertical>C#</Divider>
-            </Grid.Column>
-
             <Grid.Column width={editorWidth}>
-              <p>C# code</p>
-              <ToastContainer
-                position="bottom-right"
-                hideProgressBar
-                theme="colored"
-                autoClose={1000}
-              />
-              <CopyToClipboard text={csharpCode} onCopy={handleCopyCodeChange}>
-                <Button inverted>
-                  <Icon name="copy" />
-                  Copy to clipboard
-                </Button>
-              </CopyToClipboard>
+              <div
+                style={{
+                  display: 'flex',
+                  margin: '20px 30px',
+                  justifyContent: 'space-around',
+                }}
+              >
+                <ToastContainer
+                  position="bottom-right"
+                  hideProgressBar
+                  theme="colored"
+                  autoClose={1000}
+                />
+
+                <CopyToClipboard
+                  text={csharpCode}
+                  onCopy={handleCopyCodeChange}
+                >
+                  <Button inverted>
+                    <Icon name="copy" />
+                    Copy to clipboard
+                  </Button>
+                </CopyToClipboard>
+
+                <Dropdown
+                  button
+                  className="icon"
+                  floating
+                  labeled
+                  onChange={optionChange}
+                  options={codeTypeOptions}
+                  value={generatedCodeType}
+                />
+              </div>
 
               <MonacoEditor
                 onChange={handleEditorCodeChange}
