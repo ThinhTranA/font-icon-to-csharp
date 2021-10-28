@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { Glyph } from 'opentype.js';
 import { toUnicodeString } from '../utils/stringUtils';
 
@@ -13,9 +14,9 @@ export function generateCsharpClassCode(className: string, glyphs: Glyph[]) {
   return s;
 
   function addGlyphToClass(glyph: Glyph) {
-    return `\n\tpublic const string ${glyph.name} = "${toUnicodeString(
-      glyph.unicode
-    )}";`;
+    return `\n\tpublic const string ${_.upperFirst(
+      _.camelCase(glyph.name)
+    )} = "${toUnicodeString(glyph.unicode)}";`;
   }
 }
 
@@ -31,6 +32,8 @@ export function generateCsharpEnumCode(enumName: string, glyphs: Glyph[]) {
   return s;
 
   function addGlyphToEnum(glyph: Glyph) {
-    return `\n\t${glyph.name} = "${toUnicodeString(glyph.unicode)}",`;
+    return `\n\t${_.upperFirst(_.camelCase(glyph.name))} = "${toUnicodeString(
+      glyph.unicode
+    )}",`;
   }
 }
