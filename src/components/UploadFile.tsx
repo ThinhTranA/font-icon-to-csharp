@@ -2,6 +2,7 @@ import { Fragment, useCallback, useContext, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './UploadFile.css';
 import dragDropFilesImage from '../assets/images/dragdropfiles.svg';
+import iconslogo from '../assets/images/iconslogo.svg';
 import { getTypeFontGlyphs } from '../font-parsers/typeFont';
 import { useHistory } from 'react-router-dom';
 import { Button, Divider, Grid } from 'semantic-ui-react';
@@ -72,9 +73,9 @@ export const UploadFile = () => {
           </Grid.Column>
 
           <Grid.Column width={7}>
-            <div {...getRootProps()}>
-              <img src={dragDropFilesImage} alt="drag drop files" />
-              <input {...getInputProps()} />
+            <div>
+              <img src={iconslogo} alt="drag drop files" />
+
               <h2>Looking for font icon?</h2>
               <p>Check out popular font icon</p>
 
