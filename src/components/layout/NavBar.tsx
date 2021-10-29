@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
 import AppContext from '../../context/AppContext';
 import './NavBar.css';
+import font2csharp from '../../assets/images/font2csharp.svg';
 
 interface NavBarProps {
   uploadFileName?: string;
@@ -29,10 +30,8 @@ export const NavBar: React.FC<NavBarProps> = ({ uploadFileName }) => {
   return (
     <Menu inverted fixed="top" secondary>
       <Menu.Item header>
-        <div style={{ display: 'flex' }}>
-          <h3>Font Icon</h3>
-          <Icon name="angle right" size="large" />
-          <h3>C#</h3>
+        <div>
+          <img src={font2csharp} alt="font 2 csharp" height="32" />
         </div>
       </Menu.Item>
 
