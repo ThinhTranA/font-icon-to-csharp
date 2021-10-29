@@ -23,13 +23,16 @@ export const NavBar: React.FC<NavBarProps> = ({ uploadFileName }) => {
   const optionChange = (e: any, option: any) => {
     if (option.value === 'issue') {
       setInfoValue('');
-      window.open('https://www.google.com');
+      window.open('https://github.com/ThinhTranA/font-icon-to-csharp/issues');
+    } else if (option.value === 'support') {
+      setInfoValue('');
+      window.open('https://github.com/ThinhTranA/font-icon-to-csharp');
     }
   };
 
   return (
     <Menu inverted fixed="top" secondary>
-      <Menu.Item header>
+      <Menu.Item header as={NavLink} to="/">
         <div>
           <img src={font2csharp} alt="font 2 csharp" height="32" />
         </div>
