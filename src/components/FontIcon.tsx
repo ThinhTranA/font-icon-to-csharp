@@ -14,7 +14,7 @@ export const FontIcon: React.FC<FontIconProps> = ({ glyph }: FontIconProps) => {
       const ctx = ref.getContext('2d');
 
       var path = glyph.getPath(0, 28, 28);
-      path.fill = '#00ffff';
+      path.fill = '#4327B5';
 
       //glyph.draw(ctx!, 0, 30, 30);
       path.draw(ctx);
