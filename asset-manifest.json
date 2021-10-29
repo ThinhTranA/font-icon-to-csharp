@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/thinhtrana.github.io/font-icon-to-csharp/static/css/main.bb52e48c.chunk.css",
+    "main.js": "/thinhtrana.github.io/font-icon-to-csharp/static/js/main.03a4d74c.chunk.js",
+    "main.js.map": "/thinhtrana.github.io/font-icon-to-csharp/static/js/main.03a4d74c.chunk.js.map",
+    "runtime-main.js": "/thinhtrana.github.io/font-icon-to-csharp/static/js/runtime-main.c82e66ff.js",
+    "runtime-main.js.map": "/thinhtrana.github.io/font-icon-to-csharp/static/js/runtime-main.c82e66ff.js.map",
+    "static/css/2.d890d2ce.chunk.css": "/thinhtrana.github.io/font-icon-to-csharp/static/css/2.d890d2ce.chunk.css",
+    "static/js/2.08e66068.chunk.js": "/thinhtrana.github.io/font-icon-to-csharp/static/js/2.08e66068.chunk.js",
+    "static/js/2.08e66068.chunk.js.map": "/thinhtrana.github.io/font-icon-to-csharp/static/js/2.08e66068.chunk.js.map",
+    "static/js/3.5f0ce698.chunk.js": "/thinhtrana.github.io/font-icon-to-csharp/static/js/3.5f0ce698.chunk.js",
+    "static/js/3.5f0ce698.chunk.js.map": "/thinhtrana.github.io/font-icon-to-csharp/static/js/3.5f0ce698.chunk.js.map",
+    "index.html": "/thinhtrana.github.io/font-icon-to-csharp/index.html",
+    "static/css/2.d890d2ce.chunk.css.map": "/thinhtrana.github.io/font-icon-to-csharp/static/css/2.d890d2ce.chunk.css.map",
+    "static/css/main.bb52e48c.chunk.css.map": "/thinhtrana.github.io/font-icon-to-csharp/static/css/main.bb52e48c.chunk.css.map",
+    "static/js/2.08e66068.chunk.js.LICENSE.txt": "/thinhtrana.github.io/font-icon-to-csharp/static/js/2.08e66068.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/thinhtrana.github.io/font-icon-to-csharp/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/dragdropfiles.07b800f3.svg": "/thinhtrana.github.io/font-icon-to-csharp/static/media/dragdropfiles.07b800f3.svg",
+    "static/media/font2csharp.33c576b3.svg": "/thinhtrana.github.io/font-icon-to-csharp/static/media/font2csharp.33c576b3.svg",
+    "static/media/iconslogo.b5286b7c.svg": "/thinhtrana.github.io/font-icon-to-csharp/static/media/iconslogo.b5286b7c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c82e66ff.js",
+    "static/css/2.d890d2ce.chunk.css",
+    "static/js/2.08e66068.chunk.js",
+    "static/css/main.bb52e48c.chunk.css",
+    "static/js/main.03a4d74c.chunk.js"
+  ]
+}
