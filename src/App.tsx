@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter basename="">
+    <BrowserRouter basename="/font-icon-to-csharp">
       <AppContextProvider value={appContextValues}>
         <div className="App">
           <NavBar />
