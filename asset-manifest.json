@@ -1,29 +1,29 @@
 {
   "files": {
     "main.css": "/font-icon-to-csharp/static/css/main.bb52e48c.chunk.css",
-    "main.js": "/font-icon-to-csharp/static/js/main.669c1d24.chunk.js",
-    "main.js.map": "/font-icon-to-csharp/static/js/main.669c1d24.chunk.js.map",
-    "runtime-main.js": "/font-icon-to-csharp/static/js/runtime-main.6452834c.js",
-    "runtime-main.js.map": "/font-icon-to-csharp/static/js/runtime-main.6452834c.js.map",
+    "main.js": "/font-icon-to-csharp/static/js/main.9c6fec93.chunk.js",
+    "main.js.map": "/font-icon-to-csharp/static/js/main.9c6fec93.chunk.js.map",
+    "runtime-main.js": "/font-icon-to-csharp/static/js/runtime-main.7243af20.js",
+    "runtime-main.js.map": "/font-icon-to-csharp/static/js/runtime-main.7243af20.js.map",
     "static/css/2.09008fb8.chunk.css": "/font-icon-to-csharp/static/css/2.09008fb8.chunk.css",
-    "static/js/2.c6eca998.chunk.js": "/font-icon-to-csharp/static/js/2.c6eca998.chunk.js",
-    "static/js/2.c6eca998.chunk.js.map": "/font-icon-to-csharp/static/js/2.c6eca998.chunk.js.map",
-    "static/js/3.5f0ce698.chunk.js": "/font-icon-to-csharp/static/js/3.5f0ce698.chunk.js",
-    "static/js/3.5f0ce698.chunk.js.map": "/font-icon-to-csharp/static/js/3.5f0ce698.chunk.js.map",
+    "static/js/2.e1b880c9.chunk.js": "/font-icon-to-csharp/static/js/2.e1b880c9.chunk.js",
+    "static/js/2.e1b880c9.chunk.js.map": "/font-icon-to-csharp/static/js/2.e1b880c9.chunk.js.map",
+    "static/js/3.587b8b2c.chunk.js": "/font-icon-to-csharp/static/js/3.587b8b2c.chunk.js",
+    "static/js/3.587b8b2c.chunk.js.map": "/font-icon-to-csharp/static/js/3.587b8b2c.chunk.js.map",
     "index.html": "/font-icon-to-csharp/index.html",
     "static/css/2.09008fb8.chunk.css.map": "/font-icon-to-csharp/static/css/2.09008fb8.chunk.css.map",
     "static/css/main.bb52e48c.chunk.css.map": "/font-icon-to-csharp/static/css/main.bb52e48c.chunk.css.map",
-    "static/js/2.c6eca998.chunk.js.LICENSE.txt": "/font-icon-to-csharp/static/js/2.c6eca998.chunk.js.LICENSE.txt",
+    "static/js/2.e1b880c9.chunk.js.LICENSE.txt": "/font-icon-to-csharp/static/js/2.e1b880c9.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/font-icon-to-csharp/static/media/outline-icons.ddae9b1b.woff",
     "static/media/dragdropfiles.07b800f3.svg": "/font-icon-to-csharp/static/media/dragdropfiles.07b800f3.svg",
     "static/media/font2csharp.33c576b3.svg": "/font-icon-to-csharp/static/media/font2csharp.33c576b3.svg",
     "static/media/iconslogo.b5286b7c.svg": "/font-icon-to-csharp/static/media/iconslogo.b5286b7c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6452834c.js",
+    "static/js/runtime-main.7243af20.js",
     "static/css/2.09008fb8.chunk.css",
-    "static/js/2.c6eca998.chunk.js",
+    "static/js/2.e1b880c9.chunk.js",
     "static/css/main.bb52e48c.chunk.css",
-    "static/js/main.669c1d24.chunk.js"
+    "static/js/main.9c6fec93.chunk.js"
   ]
 }
