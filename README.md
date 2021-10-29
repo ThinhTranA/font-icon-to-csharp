@@ -1,8 +1,3 @@
-## TODO:
-* C# code name
-* Generate C# enum
-* Generate F# code
-* Generate F# enum
+## Generate glyph codes to C# from Type Font
 
-## Bug:
-* editor scroll to very long even with minium font
+https://thinhtrana.github.io/font-icon-to-csharp/
