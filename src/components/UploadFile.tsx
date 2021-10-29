@@ -37,7 +37,10 @@ export const UploadFile = () => {
       }
     }
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: '.ttf,.otf,.woff',
+  });
 
   if (isLoading) return <LoadingComponent />;
 
@@ -57,12 +60,6 @@ export const UploadFile = () => {
               >
                 BROWSE YOUR COMPUTER FILES
               </Button>
-              {/* TODO */}
-              {/* {isDragActive ? (
-        <p>Drop the files here ...</p>
-      ) : (
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      )} */}
             </div>
           </Grid.Column>
 
